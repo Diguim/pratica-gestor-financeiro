@@ -6,12 +6,6 @@ const form = document.querySelector("#form");
 const inputTransactionName = document.querySelector("#text");
 const inputTransactionAmount = document.querySelector("#amount");
 
-// let transactions = [
-//     { id: 1, name: "Bolo de brigadeiro", amount: -20 },
-//     { id: 2, name: "Salário", amount: 300 },
-//     { id: 3, name: "Torta de frango", amount: -10 },
-//     { id: 4, name: "Violão", amount: 150 }
-// ];
 
 const localStorageTransactions = JSON.parse(localStorage
     .getItem("transactions"));
@@ -63,21 +57,10 @@ const getTotal = transactionsAmounts => transactionsAmounts
 const updateBalanceValues = () => {
     const transactionsAmounts = transactions.map(({ amount }) => amount);
 
-    // const totalRed = transactionsAmounts
-    //     .reduce((accumulator, transaction) => accumulator + transaction, 0)
-    //     .toFixed(2);
     const totalRed = getTotal(transactionsAmounts);
 
-    // const income = transactionsAmounts
-    //     .filter(value => value > 0)
-    //     .reduce((accumulator, value) => accumulator + value, 0)
-    //     .toFixed(2);
     const income = getIncomes(transactionsAmounts);
 
-    // const expense = Math.abs(transactionsAmounts
-    //     .filter(value => value < 0)
-    //     .reduce((accumulator, value) => accumulator + value, 0))
-    //     .toFixed(2);
 
     const expense = getExpenses(transactionsAmounts);
 
@@ -137,6 +120,3 @@ const handleFormSubmit = event => {
 }
 
 form.addEventListener("submit", handleFormSubmit);
-
-
-
